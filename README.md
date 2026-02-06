@@ -1,70 +1,115 @@
-# Getting Started with Create React App
+# React Slack Demo
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+이 저장소는 **[Claude Code on the Web (Slack 통합)](https://code.claude.com/docs/ko/claude-code-on-the-web)** 기능을 테스트하기 위해 만들어졌습니다.
 
-## Available Scripts
+## 목적
 
-In the project directory, you can run:
+Slack에서 Claude를 멘션하여 GitHub 저장소의 코드를 분석하고, 이슈를 생성하고, PR을 리뷰하는 등의 작업을 테스트할 수 있습니다.
 
-### `npm start`
+## Claude Code on Slack 테스트 방법
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### 1. 기본 설정
+1. [Claude Code Slack 앱](https://code.claude.com/docs/ko/slack)을 워크스페이스에 설치
+2. GitHub 저장소 연동 설정 완료
+3. 이 저장소를 Claude가 접근할 수 있도록 연결
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### 2. 테스트할 수 있는 기능들
 
-### `npm test`
+#### 코드 분석 요청
+```
+@Claude 이 저장소의 컴포넌트 구조를 분석해줘
+@Claude src/components/Dashboard/Dashboard.js 파일을 리뷰해줘
+```
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+#### 이슈 관련 작업
+```
+@Claude #1 이슈에 대한 구현 계획을 세워줘
+@Claude 새로운 버그 리포트 이슈를 만들어줘
+```
 
-### `npm run build`
+#### PR 리뷰
+```
+@Claude PR #4를 리뷰해줘
+@Claude feature/sample-feature 브랜치의 변경사항을 확인해줘
+```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+#### 코드 수정 요청
+```
+@Claude DataTable 컴포넌트에 페이지네이션 기능을 추가해줘
+@Claude 다크모드 색상을 더 부드럽게 변경해줘
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## 프로젝트 구조
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+```
+src/
+├── components/
+│   ├── Header/          # 헤더 (테마 토글, 검색, 알림)
+│   ├── Sidebar/         # 사이드바 네비게이션
+│   ├── Dashboard/       # 대시보드 메인 화면
+│   ├── DataTable/       # 정렬/필터링 가능한 데이터 테이블
+│   ├── Chart/           # 인터랙티브 바 차트
+│   ├── Modal/           # 폼 검증이 포함된 모달
+│   └── common/          # Toast, Loading 등 공통 컴포넌트
+├── context/
+│   └── ThemeContext.js  # 다크/라이트 모드 상태 관리
+├── hooks/
+│   └── useLocalStorage.js  # 로컬 스토리지 커스텀 훅
+├── styles/
+│   └── global.css       # 전역 스타일 및 CSS 변수
+└── utils/
+    └── helpers.js       # 유틸리티 함수들
+```
 
-### `npm run eject`
+## 주요 기능
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+| 기능 | 설명 |
+|------|------|
+| 테마 토글 | 다크/라이트 모드 전환 (localStorage 저장) |
+| 대시보드 | 통계 카드, 차트, 최근 활동 표시 |
+| 데이터 테이블 | 정렬, 필터링, 행 선택 기능 |
+| 차트 | Revenue/Expenses 토글 가능한 바 차트 |
+| 모달 | 폼 검증이 포함된 트랜잭션 추가 모달 |
+| 토스트 알림 | 성공/에러/경고/정보 알림 |
+| 반응형 디자인 | 모바일 친화적 UI |
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## 브랜치 전략
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+- `main` - 프로덕션 브랜치
+- `develop` - 개발 브랜치
+- `feature/*` - 기능 개발 브랜치
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## 샘플 이슈 & PR
 
-## Learn More
+테스트용으로 생성된 항목들:
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+- **Issues**
+  - [#1 Add user authentication feature](../../issues/1)
+  - [#2 Improve mobile responsiveness](../../issues/2)
+  - [#3 Add unit tests for components](../../issues/3)
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+- **Pull Requests**
+  - [#4 Add View All button to Recent Activity section](../../pull/4)
 
-### Code Splitting
+## 로컬 실행
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+```bash
+# 의존성 설치
+npm install
 
-### Analyzing the Bundle Size
+# 개발 서버 실행
+npm start
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+# 프로덕션 빌드
+npm run build
+```
 
-### Making a Progressive Web App
+## 관련 문서
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+- [Claude Code on the Web 문서](https://code.claude.com/docs/ko/claude-code-on-the-web)
+- [Slack 통합 가이드](https://code.claude.com/docs/ko/slack)
+- [GitHub 통합 설정](https://code.claude.com/docs/ko/github)
 
-### Advanced Configuration
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+이 저장소는 Claude Code의 Slack 통합 기능을 테스트하고 학습하기 위한 데모 프로젝트입니다.
