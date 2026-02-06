@@ -1,0 +1,153 @@
+.chart-container {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.chart-controls {
+  display: flex;
+  gap: 8px;
+}
+
+.chart-btn {
+  padding: 6px 14px;
+  border-radius: 6px;
+  border: 1px solid var(--border-color);
+  background: var(--bg-secondary);
+  color: var(--text-secondary);
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.chart-btn:hover {
+  background: var(--bg-tertiary);
+}
+
+.chart-btn.active {
+  background: var(--primary-color);
+  color: white;
+  border-color: var(--primary-color);
+}
+
+.chart-area {
+  display: flex;
+  gap: 12px;
+  height: 250px;
+}
+
+.chart-y-axis {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 0 8px;
+  font-size: 12px;
+  color: var(--text-secondary);
+}
+
+.chart-bars {
+  flex: 1;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-around;
+  gap: 8px;
+  padding-bottom: 24px;
+  border-bottom: 1px solid var(--border-color);
+  position: relative;
+}
+
+.chart-bar-group {
+  flex: 1;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  gap: 4px;
+  height: 100%;
+  position: relative;
+}
+
+.chart-bar {
+  width: 24px;
+  border-radius: 4px 4px 0 0;
+  cursor: pointer;
+  position: relative;
+  animation: growUp 0.6s ease forwards;
+  transform-origin: bottom;
+}
+
+@keyframes growUp {
+  from {
+    transform: scaleY(0);
+  }
+  to {
+    transform: scaleY(1);
+  }
+}
+
+.chart-bar.revenue {
+  background: linear-gradient(180deg, var(--primary-color) 0%, #818cf8 100%);
+}
+
+.chart-bar.expenses {
+  background: linear-gradient(180deg, var(--warning-color) 0%, #fcd34d 100%);
+}
+
+.chart-bar:hover {
+  opacity: 0.8;
+}
+
+.bar-tooltip {
+  position: absolute;
+  top: -30px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--bg-primary);
+  border: 1px solid var(--border-color);
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 11px;
+  white-space: nowrap;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+  pointer-events: none;
+}
+
+.chart-bar:hover .bar-tooltip {
+  opacity: 1;
+}
+
+.chart-label {
+  position: absolute;
+  bottom: -20px;
+  font-size: 12px;
+  color: var(--text-secondary);
+}
+
+.chart-legend {
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  color: var(--text-secondary);
+}
+
+.legend-color {
+  width: 12px;
+  height: 12px;
+  border-radius: 3px;
+}
+
+.legend-color.revenue {
+  background: var(--primary-color);
+}
+
+.legend-color.expenses {
+  background: var(--warning-color);
+}
