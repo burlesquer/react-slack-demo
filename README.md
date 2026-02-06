@@ -1,16 +1,25 @@
 # React Slack Demo
 
-이 저장소는 **[Claude Code on the Web (Slack 통합)](https://code.claude.com/docs/ko/claude-code-on-the-web)** 기능을 테스트하기 위해 만들어졌습니다.
+이 저장소는 **Claude Code** 기능을 테스트하기 위해 만들어진 데모 프로젝트입니다.
+
+## 테스트 대상 문서
+
+| 문서 | 링크 |
+|------|------|
+| **Slack 통합** | https://code.claude.com/docs/ko/slack |
+| **Claude Code on the Web** | https://code.claude.com/docs/ko/claude-code-on-the-web |
 
 ## 목적
 
 Slack에서 Claude를 멘션하여 GitHub 저장소의 코드를 분석하고, 이슈를 생성하고, PR을 리뷰하는 등의 작업을 테스트할 수 있습니다.
 
+---
+
 ## Claude Code on Slack 테스트 방법
 
 ### 1. 기본 설정
-1. [Claude Code Slack 앱](https://code.claude.com/docs/ko/slack)을 워크스페이스에 설치
-2. GitHub 저장소 연동 설정 완료
+1. [Slack 통합 가이드](https://code.claude.com/docs/ko/slack)를 참고하여 Claude Code Slack 앱 설치
+2. [Claude Code on the Web](https://code.claude.com/docs/ko/claude-code-on-the-web) 문서를 참고하여 GitHub 저장소 연동
 3. 이 저장소를 Claude가 접근할 수 있도록 연결
 
 ### 2. 테스트할 수 있는 기능들
@@ -38,6 +47,8 @@ Slack에서 Claude를 멘션하여 GitHub 저장소의 코드를 분석하고, �
 @Claude DataTable 컴포넌트에 페이지네이션 기능을 추가해줘
 @Claude 다크모드 색상을 더 부드럽게 변경해줘
 ```
+
+---
 
 ## 프로젝트 구조
 
@@ -75,7 +86,7 @@ src/
 
 ## 브랜치 전략
 
-- `main` - 프로덕션 브랜치
+- `master` - 프로덕션 브랜치
 - `develop` - 개발 브랜치
 - `feature/*` - 기능 개발 브랜치
 
@@ -104,12 +115,14 @@ npm start
 npm run build
 ```
 
+---
+
 ## 관련 문서
 
-- [Claude Code on the Web 문서](https://code.claude.com/docs/ko/claude-code-on-the-web)
-- [Slack 통합 가이드](https://code.claude.com/docs/ko/slack)
-- [GitHub 통합 설정](https://code.claude.com/docs/ko/github)
+- [Slack 통합](https://code.claude.com/docs/ko/slack) - Claude Code Slack 앱 설치 및 설정
+- [Claude Code on the Web](https://code.claude.com/docs/ko/claude-code-on-the-web) - 웹 기반 Claude Code 사용법
+- [GitHub 통합](https://code.claude.com/docs/ko/github) - GitHub 저장소 연동 방법
 
 ---
 
-이 저장소는 Claude Code의 Slack 통합 기능을 테스트하고 학습하기 위한 데모 프로젝트입니다.
+이 저장소는 Claude Code의 Slack 통합 및 웹 기능을 테스트하고 학습하기 위한 데모 프로젝트입니다.
